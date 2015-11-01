@@ -1,0 +1,20 @@
+<div class="row link-index-row"> 
+  <div class="col-md-4 col-md-offset-4">
+    <h1> <%= @title = "Forgot your password?" %> </h1>
+  </div>
+</div>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>

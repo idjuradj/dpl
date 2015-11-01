@@ -1,0 +1,15 @@
+<div class="row link-index-row"> 
+  <div class="col-md-4 col-md-offset-4">
+    <h1> <%= @title = "Editing link" %> </h1>
+  </div>
+</div>
+
+ <% if current_user != nil %>
+	<% if ((@link.user == current_user) or (current_user.is_admin == 1)) %>
+		<%= render 'form' %>
+	<% end %>
+	<% else %>
+	<div class="row">
+		<center> You're trying to edit a story that's not yours. </center>
+	</div>
+<% end %>

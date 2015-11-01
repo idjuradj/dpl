@@ -1,0 +1,66 @@
+Ostalo za implementaciju
+
+	- stilizovanje korisnickog profila
+	- stilizovanje show stranice linka
+
+	- verifikacija url-a prilikom submitovanja linka
+	- title je obavezan kod submitovanja link-a
+	- username i email su obavezni kod registracije korisnika
+	
+	- promeniti tekst za 'submit new link'
+	- implementirati pretragu
+
+Ideje za aplikaciju
+
+	Devise
+
+	[odradjeno] Implementacija social logina i logina preko devise-a, sa istim poljima.
+	[odradjeno] Pogledati https://github.com/plataformatec/devise/tree/rails4#strong-parameters za strong parameteres
+	[odradjeno] Tutorijal za twitter pogledati sa Rails Casts na YT
+
+	[uslovno odradjeno: postoji resenje na StackOverFlow i Redit] Sortiranje na osnovu glasova
+	[uslovno odradjeno: postoji resenje na StackOverFlow i Redit] http://stackoverflow.com/questions/19103738/acts-as-votable-ordering-by-upvotes
+
+	[uslovno odradjeno: implementirano polje u bazi, samo dodati odgovarajuce provere] Implementacija admin korisnickog naloga
+
+	***
+
+	Paginacija / sortiranje linkova
+
+	Kako prikazati zasebno tekstove po danima, kao na producthunt, podeljeno po stranama
+	Za paginaciju: http://railscasts.com/episodes/51-will-paginate (https://www.youtube.com/watch?v=MIf1ojX2AGY)
+
+	***
+
+	Tagovi / Kategorije
+	
+	Razmisliti o implementaciji tagova ili kategorija
+	Postoji detaljno uputstvo kako dodati tagove, medjutim postoji dozvola da svaki korisnik dodaje tag. To moze stvoriti anarhiju, ali je slicno resenje kao na stackoverflow.
+	Kategorije su fiksno resenje, ali implementacija preko kontrolera dozvoljava da svako dodaje kategorije, razmotriti alternative.
+
+	***
+
+	Ugnezdeni komentari
+
+	Ukoliko ostane vremena i volje, razmisliti kako da se implementiraju ugnezdeni komentari. Sledeci tutorijal vredi razmotriti
+	http://www.sitepoint.com/nested-comments-rails/
+
+	***
+
+	Korisnicka profil stranica
+
+	Napraviti korisnicku stranicu sa informacijama poput
+		- about
+		- name
+		- username
+		- avatar
+		- broj poena itd
+
+	***
+
+	Dodatne funkcionalnosti:
+
+		- search
+		- automatic title check za textove na osnovu URL-a
+		- automatic image preview za textove na osnovu URL-a
+		- private messaging system

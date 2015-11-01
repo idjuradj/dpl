@@ -1,0 +1,110 @@
+<div class="row">
+    <% if current_user != nil %>
+      <% if ((@link.user == current_user) or (current_user.is_admin == 1)) %>
+        <div class="btn-group pull-right">
+          <%= link_to 'Edit', edit_link_path(@link), class: "btn btn-default" %>
+          <%= link_to 'Delete', @link, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+
+<div class="row link-index-row"> 
+    <div class="col-md-1">
+            <span class="upvote top-margin">
+              <%= link_to like_link_path(@link), method: :put, class: "upvote-image" do %>
+              <% end %>
+            </span>
+
+            <span class="score">
+              <%#= @link.get_upvotes.size -  @link.get_downvotes.size %>
+              <%= @link.cached_votes_score %>
+            </span>
+
+            <span class="downvote">
+              <%= link_to dislike_link_path(@link), method: :put, class: "downvote-image" do %>
+              <% end %>
+            </span>
+    </div>
+
+    <div class="col-md-10">
+      <span class="story-title"><h1> <%= @title = @link.title %> </h1></span>
+    </div>
+
+    <div class="col-md-1">
+      <%= link_to @link.user do %>
+        <img src="<%= @link.user.avatar %>"  class="story-show-user-avatar" alt = "<%= @link.user.username %>" />
+      <% end %>
+    </div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+  <% if !@link.url.blank? %>
+    <div class="row">
+      <span class="visit-link"><%= link_to @link.title, @link.url %></center></span>
+    </div>
+  <% end %>
+
+    <div class="row">
+      <span class="link-show-tags"><%= raw @link.tags.map(&:name).map { |t| link_to t, tag_path(t)}.join(' ') %></span>
+    </div>
+
+  <% if !@link.body.blank? %>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 story-body">
+        <%= simple_format(@link.body) %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <h3 class="comments-title">
+    <%= @link.comments.count %> Comments
+  </h3>
+
+  <% if user_signed_in? %>
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1 comment-form">
+        <%= simple_form_for [@link, Comment.new] do |f| %>
+
+          <div class="field">
+            <%= f.text_area :body, class: "form-control" %>
+          </div>
+          <br />
+
+          <%= f.submit "Add Comment", class: "submit-form-button" %>
+
+        <% end %>
+      </div>
+
+      <div class="col-md-5 comment-rules">
+        <h3 class="commenting-rules">Commenting rules</h3>
+        
+        <h4 class="commenting-rules">Think about the tone of your comment:</h4>
+        <ul>
+          <li>Be polite, friendly, and encouraging.</li>
+          <li>Have some humour, but be careful with sarcasm.</li>
+          <li>If you disagree, don’t be rude about it; give constructive (helpful) feedback.</li>
+        </ul>
+
+        <h4 class="commenting-rules">Think about the content of your comment:</h4>
+        <ul>
+          <li>Keep your comment on topic and make sense. Say something about the original post.</li>
+          <li>Think very carefully about the links you share in your comments. Share links only if they're crucial for the discussion</li>
+          <li>Avoid texting shortcuts like u for you and l8r for later, and only use one emoticon if you need to.</li>
+        </ul>
+
+        <h4 class="commenting-rules">Formatting:</h4>
+        <ul>
+          <li>You can use standard HTML tags to customize the look of your comment.</li>
+        </ul>
+
+      </div>
+    </div>
+  <% else %>
+    Please login to post comments.
+  <% end %>
+
+  <%= render :partial => @link.comments %>

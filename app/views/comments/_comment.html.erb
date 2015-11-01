@@ -1,0 +1,23 @@
+<%= div_for(comment) do %>
+	<div class="row comment-wrapper clearfix">
+		<div class="col-md-10 col-md-offset-1 comment-body">
+			<div class="author">
+				<%= link_to comment.user, method: :put do %>
+					<img src="<%= comment.user.avatar %>"  class="user-index-user-avatar" alt = "<%= comment.user.username %>" />
+				<% end %>
+
+				<span class="user-index-username"><strong><%= link_to comment.user.username, comment.user %></strong> says</span>
+			</div>
+			
+			<div class="content"><%= simple_format(comment.body) %></div>
+			
+			<div class="date-and-delete">
+				<%= time_ago_in_words(comment.created_at) %> ago
+				
+				<% if comment.user == current_user %>
+					<%= link_to 'Destroy', comment, method: :delete, data: {confirm: 'Are your sure you want to delete your comment?'}, class: "btn btn-default" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+<% end %>

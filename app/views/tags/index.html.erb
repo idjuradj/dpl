@@ -1,0 +1,10 @@
+<div class="row link-index-row"> 
+  <div class="col-md-4 col-md-offset-4">
+    <h1> <%= @title = "Tag List" %> </h1>
+  </div>
+</div>
+<% @tags.each do |tag| %>
+	<div class="row">
+		<span class="tag-index"><%= link_to tag.name, tag_path(tag) %></span>
+	</div>
+<% end %>

@@ -1,0 +1,50 @@
+1) Uvod
+1-2 strane - opis samog dokumenta i kratak opis teme
+Istorijat socijalnih mreza
+
+2) Zahtevi za realizacijom sistema
+10-15 strana - osnovna prica o radu, opisani korisnicki zahtevi, opis koriscenih tehnologija (malo opisete programski jezik (bez ulazenja u detalje sintakse), prednosti i nedostaci tehnologije, biblioteke koje su mozda koriscenje i slicno).
+	Opis ruby, rails, gemova, mysql, bootstrap itd
+
+3) Opis rada sistema
+10-15 strana - detaljniji opis uradjenog sistema i korisnicko uputstvo sa odgovorajucim slikama
+	Proces Registracije,
+		Registracija sa twiterom
+	Sadrzaj itd
+
+4) Realizacija sistema
+10-15 strana - navedite 6-7 problema koje ste imali prilikom realizacije sistema i implementacije i opisite (sa navodjenjem delova koda) kako je to reseno, ne bi bilo lose i deo sta je uradjeno po pitanju zastite sistema
+
+	[ 1 ] Uopsteni detalji oko implementacije
+
+	[ 4 ]	Twitter login: problematika lozinke, email-a itd (zajedno sa primerom koda)
+			Dodavanje strong params (zajedno sa primerom koda)
+
+	[ 1 ] 	Validacija URL-ova
+			Zahtevanje obaveznih polja
+
+	[ 1 ] 	Definisanje ruta
+			Detaljan opis ruta
+
+	[ 1 ] 	Kesiranje glasova za vote-ovanje
+			Korisnicka karma
+
+	[ 1 ] 	Bezbednost:
+			Skrivanje linkova
+			Neautorizovan edit
+			Definisanje metoda kao put
+
+	[ 1 ] Bootstrap implementacija
+
+
+5) Zakljucak
+skraceni uvod, sa rekapitulacijom samog rada, plus 2-3 paragrafa o mogucoj nadogradnji sistema
+
+	Nadogradnja
+		Bolja struktura URL-ova, koja je podesnika za SEO.
+
+
+- Literatura - 10-15 knjiga ili veb sajtova koje ste koristili 
+
+//poglavlja od uvoda do zakljucka se numerisu, literatura se ne numerise, 
+a uvodna stranica rada je u prilogu: http://home.etf.rs/~draskovic/etfdipl/

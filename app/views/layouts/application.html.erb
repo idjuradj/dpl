@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container container-navigation">
+  <div class="col-md-5 col-md-offset-1">
+    <%= link_to 'DPLSocial', root_url, class: "menu_logo" %>
+  </div>
+            
+    <% if user_signed_in? %>
+      <div class="col-md-3 col-md-offset-2 menu-logged-in">
+        <%= link_to 'Submit a new story', new_link_path, class: "menu_link" %>
+        <%= link_to 'Account settings', edit_user_registration_path,  class: "menu_link" %>
+        <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete,  class: "menu_link" %>
+        <div class="menu_user_avatar"> <img src="<%= current_user.avatar %>" alt="users avatar" /></div>
+      </div>
+    <% else %>
+      <div class="col-md-2 col-md-offset-3">
+        <%= link_to 'Sign Up', new_user_registration_path,  class: "menu_link" %>
+        <%= link_to 'Sign In', new_user_session_path,  class: "menu_link" %>
+        <%= link_to 'Twitter Sign In', user_omniauth_authorize_path(:twitter),  class: "menu_link" %><br />
+      </div>
+    <% end %>
+  
+</div>
+
+  <% flash.each do |name, msg| %>
+    <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+  <% end %>
+
+  <div class="container">
+
+    <%= yield %>
+    
+  </div>
+
+</body>
+</html>

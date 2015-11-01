@@ -1,0 +1,47 @@
+<div class="col-md-6 col-md-offset-3 sign_up_form">
+  <%= form_for(@link) do |f| %>
+    <% if @link.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+        <ul>
+        <% @link.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :url %><br>
+      <%= f.text_field :url %>
+    </div>
+    <div class="field">
+      <%= f.label :tag_list %><br>
+      Add a few descriptive tags, separated by comma. Try to keep it up to five.<br>
+      <%= f.text_field :tag_list %>
+    </div>
+    <div class="field">
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="new_link_rules">
+    <strong>It's great you decided to share your content and thoughts with us. Before posting, please have in mind our few rules:</strong>
+      <ul>
+        <li>Please be civil and polite.</li>
+        <li>Don't spam.</li>
+        <li>Don't post adult content.</li>
+        <li>Don't post illegal content.</li>
+      </ul>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

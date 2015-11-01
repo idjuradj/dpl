@@ -1,0 +1,66 @@
+<div class="row link-index-row"> 
+  <div class="col-md-4 col-md-offset-4">
+    <h1> <%= @title = "#{@user.username}'s profile" %> </h1>
+  </div>
+</div>
+
+<div class="row"> <!-- avatar info -->
+	<img src="<%= @user.avatar %>"  class="user-profile-avatar" alt = "<%= @user.username %>" />
+</div>
+
+<div class="row"> <!-- username -->
+	<span class="user-profile-username"><%= @user.username %></span>
+</div>
+
+<% if !@user.name.blank? %>
+	<div class="row"> <!-- name -->
+		<span class="user-profile-name"><%= @user.name %></span>
+	</div>
+<% end %>
+
+<% if !@user.about.blank? %>
+	<div class="row"> <!-- about -->
+		<span class="user-profile-about"><%= @user.about %></span>
+	</div>
+<% end %>
+
+<div class="row"> <!-- tabbed info info -->
+	<div class="col-md-4 user-profile-tab-first">
+		<span class="user-profile-tab-content"><%= @user.karma %></span>
+		<span class="user-profile-tab-title">karma</span>
+	</div>
+
+	<div class="col-md-4 user-profile-tab">
+		<span class="user-profile-tab-content"><%= @user.stories_posted %></span>
+		<span class="user-profile-tab-title">stories</span>
+	</div>
+
+	<div class="col-md-4 user-profile-tab-last">
+		<span class="user-profile-tab-content"><%= @user.comments_posted %></span>
+		<span class="user-profile-tab-title">comments</span>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-5 col-md-offset-1">
+		<h4 class="user-profile-feed-title">User's recent stories</h4>
+		<ul class="user-profile-feed">
+		<% @user.stories_by_user.each do |story| %>
+			<li><%= link_to story.title, story %></li>
+		<% end %>
+		</ul>
+	</div>
+
+	<div class="col-md-5">
+		<h4 class="user-profile-feed-title">User's recent comments</h4>
+		<ul class="user-profile-feed">
+		<% @user.comments_by_user.each do |comment| %>
+			<li>
+				<%= comment.body %> [<%= link_to "View story", comment.link %>]
+			</li>
+		<% end %>
+		</ul>
+	</div>
+</div>
+
+<center class="user-profile-all-users"><%= link_to "View all users", users_path %></center>

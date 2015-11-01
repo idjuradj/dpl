@@ -1,0 +1,15 @@
+<div class="row link-index-row"> 
+  <div class="col-md-4 col-md-offset-4">
+    <h1> <%= @title = "DPLS User List" %> </h1>
+  </div>
+</div>
+
+<% @users.each do |user| %>
+	<div class="row">
+		<%= link_to user do %>
+			<img src="<%= user.avatar %>"  class="user-index-user-avatar" alt = "<%= user.username %>" />
+		<% end %>
+
+		<span class="user-index-username"><%= link_to user.username, user %></span>
+	</div>
+<% end %>
